@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Digital</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-cursive { font-family: 'Dancing+Script', cursive; }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800 overflow-x-hidden">
+
+    <!-- Overlay Modal (Buka Undangan) -->
+    <div id="welcome-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-stone-900 text-white transition-opacity duration-700">
+        <div class="text-center p-6" data-aos="zoom-in">
+            <h2 class="text-xl mb-2">Hello,</h2>
+            <h1 id="guest-name-modal" class="text-4xl font-bold mb-6 font-cursive text-amber-400">Tamu Undangan</h1>
+            <p class="mb-8 text-sm text-stone-300">Kami mengundang Anda untuk merayakan kebahagiaan kami.</p>
+            <button onclick="openInvitation()" class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full transition-all shadow-lg">
+                Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle" onclick="toggleMusic()" class="fixed bottom-5 right-5 z-50 bg-white/80 p-3 rounded-full shadow-md hidden">
+        <span id="music-icon">🎵</span>
+    </button>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-[url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80')] bg-cover bg-center relative">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative z-10 text-white" data-aos="fade-up">
+            <p class="uppercase tracking-widest text-sm mb-4">The Wedding Of</p>
+            <h1 class="text-6xl md:text-8xl font-cursive mb-4">Romeo & Juliet</h1>
+            <p class="text-lg italic">24 . 12 . 2024</p>
+        </div>
+    </section>
+
+    <!-- Couple Section -->
+    <section class="py-20 px-6 container mx-auto max-w-4xl text-center">
+        <div data-aos="fade-up">
+            <h2 class="text-3xl font-cursive text-amber-700 mb-10">Mempelai</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold">Romeo Montague</h3>
+                    <p class="text-sm text-gray-500">Putra dari Bpk. Montague & Ibu Montague</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">Juliet Capulet</h3>
+                    <p class="text-sm text-gray-500">Putri dari Bpk. Capulet & Ibu Capulet</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-20 px-6 text-center">
+        <div class="container mx-auto max-w-4xl" data-aos="fade-up">
+            <h2 class="text-3xl font-cursive text-amber-700 mb-10">Lokasi Acara</h2>
+            <div class="bg-white p-4 rounded-xl shadow-lg mb-8">
+                <!-- Ganti src di bawah dengan link embed dari Google Maps Anda -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.287!2d106.824!3d-6.225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnMzIuNiJTIDEwNsKwNDknMjYuNCJF!5e0!3m2!1sid!2sid!4v1713861234567" 
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+            <p class="font-bold text-lg">Grand Ballroom Hotel Mulia</p>
+            <p class="text-sm text-gray-500">Jl. Asia Afrika, Senayan, Jakarta Pusat</p>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="py-20 bg-stone-100 px-6 text-center">
+        <div class="container mx-auto max-w-md" data-aos="fade-up">
+            <h2 class="text-3xl font-cursive text-amber-700 mb-6">Konfirmasi Kehadiran</h2>
+            <p class="text-sm mb-8 text-gray-600">Mohon konfirmasi kehadiran Anda melalui formulir di bawah ini.</p>
+            <button onclick="handleRSVP()" class="w-full bg-amber-800 text-white py-3 rounded-lg shadow-md hover:bg-amber-900 transition-all">
+                Isi RSVP Sekarang
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-xs text-gray-400">
+        <p>&copy; 2024 Created with Love. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Howler JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
