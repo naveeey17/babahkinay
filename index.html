@@ -11,15 +11,19 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-cursive { font-family: 'Dancing+Script', cursive; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-cursive { font-family: 'Dancing Script', cursive; }
+        /* Pastikan elemen data-aos tetap terlihat jika JS gagal */
+        [data-aos] { transition-property: opacity, transform; }
+        html:not(.no-js) [data-aos] { opacity: 0; }
+        html:not(.no-js) [data-aos].aos-animate { opacity: 1; }
     </style>
 </head>
-<body class="bg-stone-50 text-gray-800 overflow-x-hidden">
+<body class="bg-stone-50 text-gray-800 overflow-x-hidden overflow-y-hidden" id="main-body">
 
     <!-- Overlay Modal (Buka Undangan) -->
     <div id="welcome-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-stone-900 text-white transition-opacity duration-700">
-        <div class="text-center p-6" data-aos="zoom-in">
+        <div class="text-center p-6">
             <h2 class="text-xl mb-2">Hello,</h2>
             <h1 id="guest-name-modal" class="text-4xl font-bold mb-6 font-cursive text-amber-400">Tamu Undangan</h1>
             <p class="mb-8 text-sm text-stone-300">Kami mengundang Anda untuk merayakan kebahagiaan kami.</p>
@@ -40,7 +44,27 @@
         <div class="relative z-10 text-white" data-aos="fade-up">
             <p class="uppercase tracking-widest text-sm mb-4">The Wedding Of</p>
             <h1 class="text-6xl md:text-8xl font-cursive mb-4">Romeo & Juliet</h1>
-            <p class="text-lg italic">24 . 12 . 2024</p>
+            <p class="text-lg italic mb-8">17 . 08 . 2026</p>
+            
+            <!-- Countdown Timer -->
+            <div id="countdown" class="flex gap-4 justify-center text-white">
+                <div class="bg-black/30 backdrop-blur-md p-3 rounded-lg min-w-[70px] border border-white/20">
+                    <div id="days" class="text-2xl font-bold">00</div>
+                    <div class="text-[10px] uppercase">Hari</div>
+                </div>
+                <div class="bg-black/30 backdrop-blur-md p-3 rounded-lg min-w-[70px] border border-white/20">
+                    <div id="hours" class="text-2xl font-bold">00</div>
+                    <div class="text-[10px] uppercase">Jam</div>
+                </div>
+                <div class="bg-black/30 backdrop-blur-md p-3 rounded-lg min-w-[70px] border border-white/20">
+                    <div id="minutes" class="text-2xl font-bold">00</div>
+                    <div class="text-[10px] uppercase">Menit</div>
+                </div>
+                <div class="bg-black/30 backdrop-blur-md p-3 rounded-lg min-w-[70px] border border-white/20">
+                    <div id="seconds" class="text-2xl font-bold">00</div>
+                    <div class="text-[10px] uppercase">Detik</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -77,6 +101,46 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl text-center" data-aos="fade-up">
+            <h2 class="text-3xl font-cursive text-amber-700 mb-10">Galeri Momen</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <!-- 10 Dummy Photos -->
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=400" alt="Moment 1" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=400" alt="Moment 2" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=400" alt="Moment 3" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&q=80&w=400" alt="Moment 4" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=400" alt="Moment 5" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=400" alt="Moment 6" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&q=80&w=400" alt="Moment 7" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&fit=crop&q=80&w=400" alt="Moment 8" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&q=80&w=400" alt="Moment 9" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-md border-4 border-stone-50">
+                    <img src="https://images.unsplash.com/photo-1525772764200-be829a350797?auto=format&fit=crop&q=80&w=400" alt="Moment 10" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- RSVP Section -->
     <section class="py-20 bg-stone-100 px-6 text-center">
         <div class="container mx-auto max-w-md" data-aos="fade-up">
@@ -100,7 +164,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Custom JS -->
-    <script src="assets/js/script.js"></script>
+    <!-- Custom JS: Pastikan file ini ada di lokasi yang benar -->
+    <script src="script.js"></script>
 </body>
 </html>
